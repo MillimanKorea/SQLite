@@ -37,11 +37,11 @@
 
 **sqlite_select(ByRef sql As String, ByRef Result() as String, ByVal db_mode As Integer) As Long**
 
-- Query String 전송 후 Result 배열(1차원)으로 결과 반환
-- 반환 배열 Index 는 1 부터 값이 들어옴(즉, index 0 은 비어있음)
+- Query String 전송 후 Result() 배열(1차원)에 결과 반환
+- 반환 배열(Result()) Index 는 1 부터 값이 들어옴(즉, index 0 은 비어있음)
 - 함수 반환값은 결과 레코드의 갯수
 - Select 문 외에 다른 Query String 을 넣어도 무방함
-- Select 문으로 2개 이상의 컬럼을 지정한 경우(col1, col2 또는 *)에는 "|" separator 을 삽입하여 string concatenation 처리해서 반환
+- Select 문으로 2개 이상의 컬럼을 지정한 경우(col1, col2 또는 * )에는 "|" separator 을 삽입하여 string concatenation 처리해서 반환
 - db_mode : 1 - File DB(1), 2 - File DB(2), 3 - Memory DB, 4 - Memory Cache (반드시 "ByVal" 로 정의해 줘야 하는 것에 주의!)
 
 **sqlite_sql(ByRef sql As String, ByVal db_mode As Integer) As Integer**
@@ -82,7 +82,7 @@
 - 반환 배열 Index 는 1 부터 값이 들어옴(즉, index 0 은 비어있음)
 - 함수 반환값은 결과 레코드의 갯수
 - Select 문 외에 다른 Query String 을 넣어도 무방함
-- Select 문으로 2개 이상의 컬럼을 지정한 경우(col1, col2 또는 *)에는 "|" separator 을 삽입하여 string concatenation 처리해서 반환
+- Select 문으로 2개 이상의 컬럼을 지정한 경우(col1, col2 또는 * )에는 "|" separator 을 삽입하여 string concatenation 처리해서 반환
 
 **ado_close(ByRef ConnectionString As String) As Integer**
 
