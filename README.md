@@ -8,8 +8,8 @@
     Public Declare PtrSafe Function sqlite_open_cache Lib "sqlite.dll" (ByRef file As String) As Integer
     Public Declare PtrSafe Function sqlite_select Lib "sqlite.dll" (ByRef sql As String, ByRef Result() As String, ByVal db_mode As Integer) As Long
     Public Declare PtrSafe Function sqlite_sql Lib "sqlite.dll" (ByRef sql As String, ByVal db_mode As Integer) As Integer
-    Public Declare PtrSafe Function sqlite_close Lib "sqlite.dll" (ByRef db_mode As Integer, ByRef update As Integer) As Integer
-    Public Declare PtrSafe Function sqlite_close_in_memory Lib "sqlite.dll" (ByRef update As Integer) As Integer
+    Public Declare PtrSafe Function sqlite_close Lib "sqlite.dll" (ByVal db_mode As Integer, ByVal update As Integer) As Integer
+    Public Declare PtrSafe Function sqlite_close_in_memory Lib "sqlite.dll" (ByVal update As Integer) As Integer
     Public Declare PtrSafe Function sqlite_close_cache Lib "sqlite.dll" (ByVal update As Integer) As Integer
 
 
@@ -53,13 +53,13 @@
 - Create 나 Insert 같은 명령어를 사용할 수 있음
 - db_mode : 1 - File DB(1), 2 - File DB(2), 3 - Memory DB, 4 - Memory Cache (반드시 "ByVal" 로 정의해 줘야 하는 것에 주의!)
 
-**sqlite_close(ByRef update As Integer) As Integer**
+**sqlite_close(ByVal update As Integer) As Integer**
 
 - File DB Close
 - db_mode : 1 또는 2. 두 개의 세션을 동시에 사용하기 위한 구분자임
 - update : 의미 없음(무조건 저장)
 
-**sqlite_close_in_memory(ByRef update As Integer) As Integer**
+**sqlite_close_in_memory(ByVal update As Integer) As Integer**
 
 - Memory DB Close
 - sqlite_open_in_memory 로 DB Open 한 경우 update = 0 이면 변경내용을 DB 로 저장하지 않고 그냥 Close
